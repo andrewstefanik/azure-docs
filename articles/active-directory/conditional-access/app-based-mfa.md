@@ -14,7 +14,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
 #Customer intent: As an IT admin, I want to configure MFA on a per app basis, so that my users have a convenient sign-on experience and our mission critical apps are protected with strong authentication.
@@ -39,7 +39,7 @@ To complete the scenario in this quickstart, you need:
 
 - **Access to an Azure AD Premium edition** - Azure AD conditional access is an Azure AD Premium capability. 
 
-- **A test account called Isabella Simonsen** - If you don't know how to create a test account, see [Add cloud-based users](../fundamentals/add-users-azure-active-directory.md#add-cloud-based-users).
+- **A test account called Isabella Simonsen** - If you don't know how to create a test account, see [Add cloud-based users](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
 
 ## Test your sign-in
@@ -82,11 +82,11 @@ In your policy, set:
 
     ![Azure Active Directory](./media/app-based-mfa/02.png)
 
-3. On the **Azure Active Directory** page, in the **Manage** section, click **Conditional access**.
+3. On the **Azure Active Directory** page, in the **Security** section, click **Conditional Access**.
 
     ![Conditional access](./media/app-based-mfa/03.png)
  
-4. On the **Conditional Access** page, in the toolbar on the top, click **Add**.
+4. On the **Conditional Access** page, in the toolbar on the top, click **New policy**.
 
     ![Add](./media/app-based-mfa/04.png)
 
@@ -206,7 +206,7 @@ To test your policy, try to sign-in to your [Azure portal](https://portal.azure.
 
 When no longer needed, delete the test user and the conditional access policy:
 
-- If you don't know how to delete an Azure AD user, see [Delete users from Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-users-from-azure-ad).
+- If you don't know how to delete an Azure AD user, see [Delete users from Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
 
 - To delete your policy, select your policy, and then click **Delete** in the quick access toolbar.
 

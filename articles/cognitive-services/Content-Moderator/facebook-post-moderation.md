@@ -1,17 +1,19 @@
 ---
-title: Facebook content moderation with Azure Content Moderator | Microsoft Docs
-description: Moderate Facebook pages with machine-learning based Content Moderator
+title: "Tutorial: Facebook content moderation - Azure Content Moderator"
+titlesuffix: Azure Cognitive Services
+description: Moderate Facebook pages with Content Moderator.
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
+
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/18/2017
 ms.author: sajagtap
 ---
 
-# Facebook content moderation with Content Moderator
+# Tutorial: Facebook content moderation with Content Moderator
 
 In this tutorial, we learn how to use machine-learning-based Content Moderator to help moderate Facebook posts and comments.
 
@@ -154,7 +156,7 @@ Developers using Cognitive Services, including this client library & sample, are
 ## Next steps
 
 1. [Watch a demo (video)](https://channel9.msdn.com/Events/Build/2017/T6033) of this solution from Microsoft Build 2017.
-1. [The Facebook sample on Github](https://github.com/MicrosoftContentModerator/samples-fbPageModeration)
+1. [The Facebook sample on GitHub](https://github.com/MicrosoftContentModerator/samples-fbPageModeration)
 1. https://docs.microsoft.com/azure/azure-functions/functions-create-github-webhook-triggered-function
 2. http://ukimiawz.github.io/facebook/2015/08/12/webhook-facebook-subscriptions/
 3. http://stackoverflow.com/questions/17197970/facebook-permanent-page-access-token

@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
 
 ---
@@ -34,7 +34,7 @@ The following sections describe how to get these values.
 You can find the Azure Stack CA root certificate on the development kit and on a tenant virtual machine that is running within the development kit environment. To export the Azure Stack root certificate in PEM format, sign in to your development kit or the tenant virtual machine and run the following script:
 
 ```powershell
-$label = "AzureStackSelfSignedRootCert"
+$label = "<Your Azure Stack CA root certificate name>"
 Write-Host "Getting certificate from the current user trusted store with subject CN=$label"
 $root = Get-ChildItem Cert:\CurrentUser\Root | Where-Object Subject -eq "CN=$label" | select -First 1
 if (-not $root)
@@ -65,7 +65,5 @@ A [sample alias file](https://raw.githubusercontent.com/Azure/azure-rest-api-spe
 ## Next steps
 
 - [Deploy templates with Azure CLI](azure-stack-deploy-template-command-line.md)
-
 - [Connect with PowerShell](azure-stack-connect-powershell.md)
-
 - [Manage user permissions](azure-stack-manage-permissions.md)

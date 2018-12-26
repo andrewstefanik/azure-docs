@@ -3,7 +3,7 @@ title: VPN gateway settings for Azure Stack | Microsoft Docs
 description: Learn about settings for VPN gateways you use with Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/14/2018
-ms.author: brenduns
+ms.author: sethm
 ---
 
 # VPN gateway configuration settings for Azure Stack
@@ -181,7 +181,7 @@ Unlike Azure, which supports multiple offers as both an initiator and a responde
 |Encryption & Hashing Algorithms (Encryption)     | GCMAES256|
 |Encryption & Hashing Algorithms (Authentication) | GCMAES256|
 |SA Lifetime (Time)  | 27,000 seconds  |
-|SA Lifetime (Bytes) | 33,553,408     |
+|SA Lifetime (Kilobytes) | 33,553,408     |
 |Perfect Forward Secrecy (PFS) |None<sup>See note 1</sup> |
 |Dead Peer Detection | Supported|  
 

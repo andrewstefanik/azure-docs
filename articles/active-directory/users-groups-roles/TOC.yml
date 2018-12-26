@@ -2,8 +2,8 @@
   href: index.yml
 - name: Overview
   items:
-  - name: Azure identity management
-    href: /azure/active-directory/fundamentals/identity-fundamentals?context=azure/active-directory/users-groups-roles/context/ugr-context
+  - name: Users, groups, licensing, and roles
+    href: directory-overview-user-model.md
 - name: Quickstarts
   items:
   - name: Add users to Azure AD
@@ -40,8 +40,8 @@
       href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: Manage user profiles    
       href: /azure/active-directory/fundamentals/active-directory-users-profile-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-    - name: Share accounts    
-      href: /azure/active-directory/active-directory-sharing-accounts?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: Share user accounts  
+      href: users-sharing-accounts.md
     - name: Assign users to admin roles    
       href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: Restore a deleted user    
@@ -56,6 +56,8 @@
     items:
     - name: Administer your directory    
       href: /azure/active-directory/fundamentals/active-directory-administer?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: Manage domain names
+      href: domains-manage.md
     - name: Delete a directory    
       href: directory-delete-howto.md
     - name: Multiple directories    
@@ -98,12 +100,10 @@
       items: 
       - name: Create a dynamic group    
         href: groups-create-rule.md
-      - name: Rule syntax and propertiess    
+      - name: Dynamic group rules    
         href: groups-dynamic-membership.md
-      - name: Change group membership type    
+      - name: Change group membership type  
         href: groups-change-type.md
-      - name: Troubleshoot    
-        href: groups-troubleshooting.md
     - name: Set up user-created groups    
       href: groups-self-service-management.md
   - name: Assign licenses
@@ -120,16 +120,16 @@
       href: licensing-group-advanced.md
     - name: Group licensing with PowerShell
       href: licensing-ps-examples.md
-    - name: Product and service plan reference    
+    - name: Product and service plan IDs
       href: licensing-service-plan-reference.md
   - name: Azure AD administrator roles    
     items: 
-    - name: Roles and permissions reference 
+    - name: Roles and permissions 
       href: directory-assign-admin-roles.md
-    - name: View role members    
+    - name: View and assign roles   
       href: directory-manage-roles-portal.md
-    - name: Assign a role to a user    
-      href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: Least-privileged roles by task   
+      href: roles-delegate-by-task.md
     - name: Administrator role security    
       items:   
       - name: Role security planning    
@@ -138,12 +138,12 @@
         href: directory-emergency-access.md
     - name: Administrative units    
       href: directory-administrative-units.md
-    - name: Configure token lifetimes   
-      href: /azure/active-directory/active-directory-configurable-token-lifetimes?context=azure/active-directory/users-groups-roles/context/ugr-context
   - name: Integrate services with Azure AD
     items: 
     - name: Integrate LinkedIn with Azure AD    
       href: linkedin-integration.md
+    - name: LinkedIn data sharing   
+      href: linkedin-user-consent.md
   - name: Troubleshoot
     items:
     - name: Get support for Azure AD    

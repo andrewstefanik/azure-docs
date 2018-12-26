@@ -1,5 +1,5 @@
 ---
-title: Back up your app in Azure
+title: Back up app - Azure App Service
 description: Learn how to create backups of your apps in Azure App Service.
 services: app-service
 documentationcenter: ''
@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
+ms.custom: seodec18
 
 ---
 # Back up your app in Azure
-The Backup and Restore feature in [Azure App Service](app-service-web-overview.md) lets you easily
+The Backup and Restore feature in [Azure App Service](overview.md) lets you easily
 create app backups manually or on a schedule. You can restore the app to a snapshot of a previous state by overwriting the existing app or restoring to another app. 
 
 For information on restoring an app from backup, see [Restore an app in Azure](web-sites-restore.md).
@@ -139,7 +140,7 @@ Create a file called `_backup.filter` and put the preceding list in the file, bu
     \site\wwwroot\Images\2013
 ```
 
-Upload `_backup.filter` file to the `D:\home\site\wwwroot\` directory of your site using [ftp](app-service-deploy-ftp.md) or any other method. If you wish, you can create the file directly using Kudu  `DebugConsole` and insert the content there.
+Upload `_backup.filter` file to the `D:\home\site\wwwroot\` directory of your site using [ftp](deploy-ftp.md) or any other method. If you wish, you can create the file directly using Kudu  `DebugConsole` and insert the content there.
 
 Run backups the same way you would normally do it, [manually](#create-a-manual-backup) or [automatically](#configure-automated-backups). Now, any files and folders that are specified in `_backup.filter` is excluded from the future backups scheduled or manually initiated. 
 
@@ -155,7 +156,7 @@ Run backups the same way you would normally do it, [manually](#create-a-manual-b
 ## How backups are stored
 After you have made one or more backups for your app, the backups are visible on the **Containers** page of your storage account, and your app. In the storage account, each backup consists of a`.zip` file that contains the backup data and an `.xml` file that contains a manifest of the `.zip` file contents. You can unzip and browse these files if you want to access your backups without actually performing an app restore.
 
-The database backup for the app is stored in the root of the .zip file. For a SQL database, this is a BACPAC file (no file extension) and can be imported. To create a SQL database based on the BACPAC export, see [Import a BACPAC File to Create a New User Database](http://technet.microsoft.com/library/hh710052.aspx).
+The database backup for the app is stored in the root of the .zip file. For a SQL database, this is a BACPAC file (no file extension) and can be imported. To create a SQL database based on the BACPAC export, see [Import a BACPAC File to Create a New User Database](https://technet.microsoft.com/library/hh710052.aspx).
 
 > [!WARNING]
 > Altering any of the files in your **websitebackups** container can cause the backup to become invalid and therefore non-restorable.
@@ -168,8 +169,8 @@ You can automate backup management with scripts, using the [Azure CLI](/cli/azur
 
 For samples, see:
 
-- [Azure CLI samples](app-service-cli-samples.md)
-- [Azure PowerShell samples](app-service-powershell-samples.md)
+- [Azure CLI samples](samples-cli.md)
+- [Azure PowerShell samples](samples-powershell.md)
 
 <a name="nextsteps"></a>
 

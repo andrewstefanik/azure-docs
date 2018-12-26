@@ -10,7 +10,7 @@ ms.service: active-directory
 ms.component: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/11/18
+ms.date: 09/11/2018
 ms.author: lizross
 ms.reviewer: asteen
 ---
@@ -38,9 +38,9 @@ By using the MyApps portal, you can edit some of your profile settings and do th
 
 ## Access the MyApps portal
 
-You can access the MyApps portal by going to `http://myapps.microsoft.com`.
+You can access the MyApps portal by going to `https://myapps.microsoft.com`.
 
-If you have custom branding configured for your sign-in page, you can load the branding by appending your organization’s domain to the URL (for example, `http://myapps.microsoft.com/<your domain>.com`).
+If you have custom branding configured for your sign-in page, you can load the branding by appending your organization’s domain to the URL (for example, `https://myapps.microsoft.com/<your domain>.com`).
 
 You can use any active or verified domain name that has been configured in your Azure portal, as shown here:
 ![Wingtip Toys domain name][2]  
@@ -81,7 +81,7 @@ To sign in to password-based single sign-on, you must use the extension. After t
 >
 You can download the extension directly from the following sites:
 - [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
-- [Edge](https://go.microsoft.com/fwlink/?linkid=845176)
+- [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
 - [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 If you are using a My Apps URL other than `https://myapps.microsoft.com`, configure your default URL by doing the following:
@@ -135,7 +135,7 @@ If you are an Azure administrator and you are signed in to the Azure portal by u
 To test in a *different* user account, do the following:
 
 1. At the upper right of the Azure portal or the MyApps portal, select **Sign Out**. 
-2. Go to the [MyApps portal](http://myapps.microsoft.com).
+2. Go to the [MyApps portal](https://myapps.microsoft.com).
 3. On the sign-in page, type the username and password for the account in your directory that you want to test.
 
 
@@ -198,7 +198,7 @@ For example, if an application is configured to authenticate users by using AD F
 
 ## Next steps
 
-- To view a list of all topics that are related to application management, see the [article index for application management in Azure Active Directory](../active-directory-apps-index.md).
+- To learn about application management, see [Application Management in Azure Active Directory](../manage-apps/what-is-application-management.md).
  
 - To learn how to integrate a SaaS app with Azure AD, see the [list of tutorials on how to integrate SaaS apps](../saas-apps/tutorial-list.md).
  

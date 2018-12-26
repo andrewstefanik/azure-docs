@@ -1,22 +1,25 @@
 ---
-title: Azure Disk Encryption Prerequisites | Microsoft Docs
+title: Prerequisites - Azure Disk Encryption for IaaS VMs | Microsoft Docs
 description: This article provides prerequisites for using Microsoft Azure Disk Encryption for IaaS VMs.
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 09/10/2018
+ms.date: 12/17/2018
 
+ms.custom: seodec18
 ---
 
-# Azure Disk Encryption prerequisites 
+# Azure Disk Encryption prerequisites
+
  This article, Azure Disk Encryption Prerequisites, explains items that need to be in place before you can use Azure Disk Encryption. Azure Disk Encryption is integrated with [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) to help manage encryption keys. You can use [Azure PowerShell](/powershell/azure/overview), [Azure CLI](/cli/azure/), or the [Azure portal](https://portal.azure.com) to configure Azure Disk Encryption.
 
 Before you enable Azure Disk Encryption on Azure IaaS VMs for the supported scenarios that were discussed in the [Azure Disk Encryption Overview](azure-security-disk-encryption-overview.md) article, be sure to have the prerequisites in place. 
 
-> [!NOTE]
-> Certain recommendations might increase data, network, or compute resource usage, resulting in additional license or subscription costs. You must have a valid active Azure subscription to create resources in Azure in the supported regions.
+> [!WARNING]
+> - If you have previously used [Azure Disk Encryption with Azure AD app](azure-security-disk-encryption-prerequisites-aad.md) to encrypt this VM, you will have to continue use this option to encrypt your VM. You can’t use [Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) on this encrypted VM as this isn’t a supported scenario, meaning switching away from AAD application for this encrypted VM isn’t supported yet.
+> - Certain recommendations might increase data, network, or compute resource usage, resulting in additional license or subscription costs. You must have a valid active Azure subscription to create resources in Azure in the supported regions.
 
 
 ## <a name="bkmk_OSs"></a> Supported operating systems
@@ -63,7 +66,7 @@ An example of commands that can be used to mount the data disks and create the n
     - [Install and configure Azure PowerShell for Windows](/powershell/azure/install-azurerm-ps). 
         - Install PowerShellGet, Azure PowerShell, and load the AzureRM module. 
     - [Install and configure Azure Powershell on macOS and Linux](/powershell/azure/install-azurermps-maclinux).
-        -  Install PowerShell Core, Azure PowerShell for .NET Core, and load the AzureRM.Netcore module.
+        -  Install PowerShell Core, Azure PowerShell for .NET Core, and load the Az module.
 
 2. Verify the installed versions of the AzureRM module. If needed, [update the Azure PowerShell module](/powershell/azure/install-azurerm-ps#update-the-azure-powershell-module).
     -  The AzureRM module version needs to be 6.0.0 or higher.
@@ -123,6 +126,9 @@ If you're already familiar with the Key Vault and Azure AD prerequisites for Azu
 1. If needed, create a resource group.
 2. Create a key vault. 
 3. Set key vault advanced access policies.
+
+>[!WARNING]
+>Before deleting a key vault, ensure that you did not encrypt any existing VMs with it. To protect a vault from accidental deletion, [enable soft delete](../key-vault/key-vault-soft-delete-powershell.md#enabling-soft-delete) and a [resource lock](../azure-resource-manager/resource-group-lock-resources.md) on the vault. 
  
 ## <a name="bkmk_KeyVault"></a> Create a key vault 
 Azure Disk Encryption is integrated with [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) to help you control and manage the disk-encryption keys and secrets in your key vault subscription. You can create a key vault or use an existing one for Azure Disk Encryption. For more information about key vaults, see [Get started with Azure Key Vault](../key-vault/key-vault-get-started.md) and [Secure your key vault](../key-vault/key-vault-secure-your-key-vault.md). You can use a Resource Manager template, Azure PowerShell, or the Azure CLI to create a key vault. 
@@ -201,7 +207,7 @@ The Azure platform needs access to the encryption keys or secrets in your key va
   - **Enable Key Vault for template deployment, if needed:** Enables Azure Resource Manager to get secrets from this key vault when this key vault is referenced in a template deployment.
 
      ```azurepowershell-interactive             
-     Set-AzureRmKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MySecureRG' -EnabledForTemplateDeployment`
+     Set-AzureRmKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MySecureRG' -EnabledForTemplateDeployment
      ```
 
 ### <a name="bkmk_KVperCLI"></a> Set key vault advanced access policies using the Azure CLI

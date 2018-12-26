@@ -1,7 +1,7 @@
 ---
-title: Security in Azure App Service and Azure Functions | Microsoft Docs
+title: Security overview - Azure App Service | Microsoft Docs
 description: Learn about how App Service helps secure your app, and how you can further lock down your app from threats. 
-keywords: azure app service, web app, mobile app, api app, function app, security, secure, secured, compliance, compliant, certificate, certificates, https, ftps, tls, trust, encryption, encrypt, encrypted, ip restriction, authentication, authorization, authn, autho, msi, managed service identity, secrets, secret, patching, patch, patches, version, isolation, network isolation, ddos, mitm
+keywords: azure app service, web app, mobile app, api app, function app, security, secure, secured, compliance, compliant, certificate, certificates, https, ftps, tls, trust, encryption, encrypt, encrypted, ip restriction, authentication, authorization, authn, autho, msi, managed service identity, managed identity, secrets, secret, patching, patch, patches, version, isolation, network isolation, ddos, mitm
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
+ms.custom: seodec18
 
 ---
-# Security in Azure App Service and Azure Functions
+# Security in Azure App Service
 
-This article shows you how [Azure App Service](app-service-web-overview.md) helps secure your web app, mobile app back end, API app, and [Azure Functions](/azure/azure-functions/). It also shows how you can further secure your app with the built-in App Service features.
+This article shows you how [Azure App Service](overview.md) helps secure your web app, mobile app back end, API app, and [function app](/azure/azure-functions/). It also shows how you can further secure your app with the built-in App Service features.
 
 The platform components of App Service, including Azure VMs, storage, network connections, web frameworks, management and integration features, are actively secured and hardened. App Service goes through vigorous compliance checks on a continuous basis to make sure that:
 
@@ -39,7 +40,7 @@ The following sections show you how to further protect your App Service app from
 App Service lets you secure your apps with [HTTPS](https://wikipedia.org/wiki/HTTPS). When your app is created, its default domain name (\<app_name>.azurewebsites.net) is already accessible using HTTPS. If you [configure a custom domain for your app](app-service-web-tutorial-custom-domain.md), you should also [secure it with a custom certificate](app-service-web-tutorial-custom-ssl.md) so that client browsers can make secured HTTPS connections to your custom domain. There are two ways to do it:
 
 - **App Service certificate** - Create a certificate directly in Azure. The certificate is secured in [Azure Key Vault](/azure/key-vault/), and can be imported into your App Service app. For more information, see [Buy and Configure an SSL Certificate for your Azure App Service](web-sites-purchase-ssl-web-site.md).
-- **Third-party certificate** - Upload a custom SSL certificate that you purchased from a trusted certificate authority and bind it to your App Service app. App Service supports both single-domain certificates and wildcard certificates. It also supports self-signed certificates for testing purposes. For more information, see [Bind an existing custom SSL certificate to Azure Web Apps](app-service-web-tutorial-custom-ssl.md).
+- **Third-party certificate** - Upload a custom SSL certificate that you purchased from a trusted certificate authority and bind it to your App Service app. App Service supports both single-domain certificates and wildcard certificates. It also supports self-signed certificates for testing purposes. For more information, see [Bind an existing custom SSL certificate to Azure App Service](app-service-web-tutorial-custom-ssl.md).
 
 ## Insecure protocols (HTTP, TLS 1.0, FTP)
 
@@ -47,7 +48,7 @@ To secure your app against all unencrypted (HTTP) connections, App Service provi
 
 [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0 is no longer considered secure by industry standards, such as [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard). App Service lets you disable outdated protocols by [enforcing TLS 1.1/1.2](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions).
 
-App Service supports both FTP and FTPS for deploying your files. However, FTPS should be used instead of FTP, if at all possible. When one or both of these protocols are not in use, you should [disable them](app-service-deploy-ftp.md#enforce-ftps).
+App Service supports both FTP and FTPS for deploying your files. However, FTPS should be used instead of FTP, if at all possible. When one or both of these protocols are not in use, you should [disable them](deploy-ftp.md#enforce-ftps).
 
 ## Static IP restrictions
 
@@ -65,7 +66,7 @@ App Service authentication and authorization support multiple authentication pro
 
 When authenticating against a back-end service, App Service provides two different mechanisms depending on your need:
 
-- **Service identity** - Sign in to the remote resource using the identity of the app itself. App Service lets you easily create a [managed service identity](app-service-managed-service-identity.md), which you can use to authenticate with other services, such as [Azure SQL Database](/azure/sql-database/) or [Azure Key Vault](/azure/key-vault/). For an end-to-end tutorial of this approach, see [Secure Azure SQL Database connection from App Service using managed service identity](app-service-web-tutorial-connect-msi.md).
+- **Service identity** - Sign in to the remote resource using the identity of the app itself. App Service lets you easily create a [managed identity](app-service-managed-service-identity.md), which you can use to authenticate with other services, such as [Azure SQL Database](/azure/sql-database/) or [Azure Key Vault](/azure/key-vault/). For an end-to-end tutorial of this approach, see [Secure Azure SQL Database connection from App Service using a managed identity](app-service-web-tutorial-connect-msi.md).
 - **On-behalf-of (OBO)** - Make delegated access to remote resources on behalf of the user. With Azure Active Directory as the authentication provider, your App Service app can perform delegated sign-in to a remote service, such as [Azure Active Directory Graph API](../active-directory/develop/active-directory-graph-api.md) or a remote API app in App Service. For an end-to-end tutorial of this approach, see [Authenticate and authorize users end-to-end in Azure App Service](app-service-web-tutorial-auth-aad.md).
 
 ## Connectivity to remote resources
@@ -102,13 +103,13 @@ You can securely access on-premises resources, such as databases, in three ways:
 
 Don't store application secrets, such as database credentials, API tokens, and private keys in your code or configuration files. The commonly accepted approach is to access them as [environment variables](https://wikipedia.org/wiki/Environment_variable) using the standard pattern in your language of choice. In App Service, the way to define environment variables is through [app settings](web-sites-configure.md#app-settings) (and, especially for .NET applications, [connection strings](web-sites-configure.md#connection-strings)). App settings and connection strings are stored encrypted in Azure, and they're decrypted only before being injected into your app's process memory when the app starts. The encryption keys are rotated regularly.
 
-Alternatively, you can integrate your App Service app with [Azure Key Vault](/azure/key-vault/) for advanced secrets management. By [accessing the Key Vault with a managed service identity](../key-vault/tutorial-web-application-keyvault.md), your App Service app can securely access the secrets you need.
+Alternatively, you can integrate your App Service app with [Azure Key Vault](/azure/key-vault/) for advanced secrets management. By [accessing the Key Vault with a managed identity](../key-vault/tutorial-web-application-keyvault.md), your App Service app can securely access the secrets you need.
 
 ## Network isolation
 
 Except for the **Isolated** pricing tier, all tiers run your apps on the shared network infrastructure in App Service. For example, the public IP addresses and front-end load balancers are shared with other tenants. The **Isolated** tier gives you complete network isolation by running your apps inside a dedicated [App Service environment](environment/intro.md). An App Service environment runs in your own instance of [Azure Virtual Network](/azure/virtual-network/). It lets you: 
 
-- Restrict network access with [network security groups](../virtual-network/virtual-networks-nsg.md). 
+- Restrict network access with [network security groups](../virtual-network/virtual-networks-dmz-nsg.md). 
 - Serve your apps through a dedicated public endpoint, with dedicated front ends.
 - Serve internal application using an internal load balancer (ILB), which allows access only from inside your Azure Virtual Network. The ILB has an IP address from your private subnet, which provides total isolation of your apps from the internet.
 - [Use an ILB behind a web application firewall (WAF)](environment/integrate-with-application-gateway.md). The WAF offers enterprise-level protection to your public-facing applications, such as DDoS protection, URI filtering, and SQL injection prevention.

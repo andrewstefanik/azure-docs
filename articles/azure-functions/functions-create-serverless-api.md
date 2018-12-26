@@ -49,7 +49,7 @@ By default, your HTTP-triggered function is configured to accept any HTTP method
 
 1. Click **Save**.
 
-You can learn more about customizing HTTP functions in [Azure Functions HTTP and webhook bindings](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#customizing-the-http-endpoint).
+You can learn more about customizing HTTP functions in [Azure Functions HTTP bindings](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#customizing-the-http-endpoint).
 
 ### Test your API
 
@@ -67,7 +67,7 @@ In the next section, you will surface your API through a proxy. Azure Functions 
 
 A proxy can point to any HTTP resource, such as:
 - Azure Functions 
-- API apps in [Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-overview)
+- API apps in [Azure App Service](https://docs.microsoft.com/azure/app-service/overview)
 - Docker containers in [App Service on Linux](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro)
 - Any other hosted API
 
@@ -182,7 +182,7 @@ In this tutorial, you learned how to build and customize an API on Azure Functio
 
 The following references may be helpful as you develop your API further:
 
-- [Azure Functions HTTP and webhook bindings](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook)
+- [Azure Functions HTTP bindings](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook)
 - [Working with Azure Functions Proxies]
 - [Documenting an Azure Functions API (preview)](https://docs.microsoft.com/azure/azure-functions/functions-api-definition-getting-started)
 

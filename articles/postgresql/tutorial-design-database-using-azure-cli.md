@@ -1,14 +1,11 @@
 ---
 title: 'Tutorial: Design an Azure Database for PostgreSQL using Azure CLI'
 description: This tutorial shows how to create, configure, and query your first Azure Database for PostgreSQL server using Azure CLI.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 04/01/2018
 ---
@@ -24,11 +21,11 @@ In this tutorial, you use Azure CLI (command-line interface) and other utilities
 > * Update data
 > * Restore data
 
-You may use the Azure Cloud Shell in the browser, or [install Azure CLI 2.0]( /cli/azure/install-azure-cli) on your own computer to run the commands in this tutorial.
+You may use the Azure Cloud Shell in the browser, or [install Azure CLI]( /cli/azure/install-azure-cli) on your own computer to run the commands in this tutorial.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-If you choose to install and use the CLI locally, this article requires that you are running the Azure CLI version 2.0 or later. Run `az --version` to find the version. If you need to install or upgrade, see [Install Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+If you choose to install and use the CLI locally, this article requires that you are running the Azure CLI version 2.0 or later. Run `az --version` to find the version. If you need to install or upgrade, see [Install Azure CLI]( /cli/azure/install-azure-cli). 
 
 If you have multiple subscriptions, choose the appropriate subscription in which the resource exists or is billed for. Select a specific subscription ID under your account using [az account set](/cli/azure/account#az_account_set) command.
 ```azurecli-interactive

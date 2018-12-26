@@ -13,8 +13,12 @@ ms.date: 08/08/2018
 ms.author: danlep
 ms.custom: mvc
 
+ROBOTS: NOINDEX
+
 ---
 # Batch AI service quotas and limits
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 As with other Azure services, there are limits on certain resources associated with the Batch AI service. In Batch AI, these limits are default quotas applied at the subscription level for each region where the service is [available](https://azure.microsoft.com/global-infrastructure/services/). This article discusses those defaults, and how you can request quota increases.
 
@@ -29,22 +33,7 @@ If you plan to run production workloads in Batch AI, you may need to increase on
 
 ## Resource quotas
 
-In Batch AI, there is a default quota limit on both the number of cores and number of clusters allowed per region in a subscription.
-
-| **Resource** | **Default limit** | **Maximum limit** |
-| --- | --- | --- |
-| Dedicated cores per region | 10 - 24 | N/A<sup>1</sup> |
-| Low-priority cores per region | 10 - 24 | N/A<sup>2</sup> |
-| Clusters per region | 20 | 200<sup>3</sup> |
-
-> [!NOTE]
-> Default limits vary depending on the type of subscription you have.
-
-<sup>1</sup> The number of dedicated cores per Batch AI subscription can be increased, but the maximum number is unspecified. Contact Azure support to discuss increase options.
-
-<sup>2</sup> The number of low-priority cores per Batch AI subscription can be increased, but the maximum number is unspecified. Contact Azure support to discuss increase options.
-
-<sup>3</sup> Contact Azure support if you want to request an increase beyond this limit.
+[!INCLUDE [azure-batch-ai-limits](../../includes/azure-batch-ai-limits.md)]
 
 ## Other limits
 

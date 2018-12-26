@@ -27,8 +27,8 @@ The Python SDK supports API version profiles to target different cloud platforms
 
 1. **latest**  
     The profile targets the most recent API versions for all service providers in the Azure Platform.
-2.	**2018-03-01-hybrid**  
-    **2018-03-01-hybrid**  
+2.	**2017-03-09-profile**  
+    **2017-03-09-profile**  
     The profile targets the API versions of the resource providers supported by Azure Stack.
 
     For more information about API profiles and Azure Stack, see [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md).
@@ -126,7 +126,7 @@ The examples are not necessarily in the order shown in the above list.
     export ARM_ENDPOINT={your AzureStack Resource Manager Endpoint}
     ```
 
-7.  In order to run this sample, Ubuntu 16.04-LTS and WindowsServer 2012-R2-Datacenter images must be present in Azure Stack market place. These can be either [downloaded from Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) or [added to Platform Image Repository](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-vm-image).
+7.  In order to run this sample, Ubuntu 16.04-LTS and WindowsServer 2012-R2-Datacenter images must be present in Azure Stack marketplace. These can be either [downloaded from Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) or [added to Platform Image Repository](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-vm-image).
 
 8. Run the sample.
 
@@ -153,5 +153,5 @@ os_disk = compute_client.disks.get(GROUP_NAME, os_disk_name)
 
 - [Azure Python Development Center](https://azure.microsoft.com/develop/python/)
 - [Azure Virtual Machines documentation](https://azure.microsoft.com/services/virtual-machines/)
-- [Learning Path for Virtual Machines](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/)
-- If you don't have a Microsoft Azure subscription, you can get a FREE trial account [here](http://go.microsoft.com/fwlink/?LinkId=330212).
+- [Learning Path for Virtual Machines](/learn/paths/deploy-a-website-with-azure-virtual-machines/)
+- If you don't have a Microsoft Azure subscription, you can get a FREE trial account [here](https://go.microsoft.com/fwlink/?LinkId=330212).

@@ -5,7 +5,7 @@ services: azure-stack
 keywords: 
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 09/05/2018
+ms.date: 11/27/2018
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: thoroet
@@ -65,7 +65,7 @@ The Azure Stack Readiness Checker Tool provides the ability to create a certific
     ```PowerShell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
 
-    Start-AzsReadinessChecker -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD -ExtensionHostFeature $true
+    Start-AzsReadinessChecker -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD
     ```
 
 5. Place your certificate(s) in the appropriate directories.
@@ -79,8 +79,7 @@ Use a computer that can connect to the Azure Stack privileged endpoint for the n
 
 1. Use a computer that can connect to the Azure Stack privileged endpoint for the next steps. Make sure you access to the new certificate files from that computer.
 2. Open PowerShell ISE to execute the next script blocks
-3. Import the certificate for hosting endpoint. Adjust the script to match your environment.
-4. Import the certificate for the Admin hosting endpoint.
+3. Import the certificate for the Admin hosting endpoint.
 
     ```PowerShell  
 
@@ -88,9 +87,9 @@ Use a computer that can connect to the Azure Stack privileged endpoint for the n
 
     $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
 
-    [Byte[]] $AdminHostingCertContent = [Byte[]](Get-Content c:\certificate\myadminhostingcertificate.pfx -Encoding Byte)
+    [Byte[]]$AdminHostingCertContent = [Byte[]](Get-Content c:\certificate\myadminhostingcertificate.pfx -Encoding Byte)
 
-    Invoke-Command -ComputeName <PrivilegedEndpoint computer name> `
+    Invoke-Command -ComputerName <PrivilegedEndpoint computer name> `
     -Credential $CloudAdminCred `
     -ConfigurationName "PrivilegedEndpoint" `
     -ArgumentList @($AdminHostingCertContent, $CertPassword) `
@@ -99,15 +98,15 @@ Use a computer that can connect to the Azure Stack privileged endpoint for the n
             Import-AdminHostingServiceCert $AdminHostingCertContent $certPassword
     }
     ```
-5. Import the certificate for the hosting endpoint.
+4. Import the certificate for the hosting endpoint.
     ```PowerShell  
     $CertPassword = read-host -AsSecureString -prompt "Certificate Password"
 
     $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
 
-    [Byte[]] $HostingCertContent = [Byte[]](Get-Content c:\certificate\myhostingcertificate.pfx  -Encoding Byte)
+    [Byte[]]$HostingCertContent = [Byte[]](Get-Content c:\certificate\myhostingcertificate.pfx  -Encoding Byte)
 
-    Invoke-Command -ComputeName <PrivilegedEndpoint computer name> `
+    Invoke-Command -ComputerName <PrivilegedEndpoint computer name> `
     -Credential $CloudAdminCred `
     -ConfigurationName "PrivilegedEndpoint" `
     -ArgumentList @($HostingCertContent, $CertPassword) `
@@ -117,8 +116,6 @@ Use a computer that can connect to the Azure Stack privileged endpoint for the n
     }
     ```
 
-
-
 ### Update DNS configuration
 
 > [!Note]  
@@ -127,8 +124,8 @@ If individual host A records have been configured to publish Azure Stack endpoin
 
 | IP | Hostname | Type |
 |----|------------------------------|------|
-| \<IP> | Adminhosting.<Region>.<FQDN> | A |
-| \<IP> | Hosting.<Region>.<FQDN> | A |
+| \<IP> | *.Adminhosting.\<Region>.\<FQDN> | A |
+| \<IP> | *.Hosting.\<Region>.\<FQDN> | A |
 
 Allocated IPs can be retrieved using privileged endpoint by running the cmdlet **Get-AzureStackStampInformation**.
 
